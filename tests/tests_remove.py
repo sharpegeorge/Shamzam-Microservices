@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch, MagicMock
 import sqlite3
-from database import reset_db
-import track_remove
+from ../database import reset_db
+import ../track_remove
 
 class testCase(unittest.TestCase):
     def setUp(self):

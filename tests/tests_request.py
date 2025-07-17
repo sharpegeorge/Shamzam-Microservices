@@ -1,7 +1,7 @@
 import unittest
-from database import reset_db
+from ../database import reset_db
 import base64
-import track_request
+import ../track_request
 from unittest.mock import patch
 import sqlite3
 
@@ -18,7 +18,7 @@ class testCase(unittest.TestCase):
         mock_get_db.return_value = sqlite3.connect('mock_database.db') # using mock database for testing
 
         # Reading track fragment and encodes to base64 
-        with open("wavs/~Blinding Lights.wav", "rb") as file:
+        with open("../wavs/~Blinding Lights.wav", "rb") as file:
             uploadAudio = {"audio": base64.b64encode(file.read()).decode("utf-8")}
 
         # Posts request
@@ -26,7 +26,7 @@ class testCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200) 
 
         # Getting correct audio track
-        with open("wavs/Blinding Lights.wav", "rb") as file:
+        with open("../wavs/Blinding Lights.wav", "rb") as file:
             correctAudio = base64.b64encode(file.read()).decode("utf-8")
 
         # Getting audio track from response
@@ -41,7 +41,7 @@ class testCase(unittest.TestCase):
         mock_get_db.return_value = sqlite3.connect('mock_database.db') # using mock database for testing
 
         # Reading track fragment of a song not registered in mock database
-        with open("wavs/~Don't Look Back In Anger.wav", "rb") as file:
+        with open("../wavs/~Don't Look Back In Anger.wav", "rb") as file:
             uploadAudio = {"audio": base64.b64encode(file.read()).decode("utf-8")}
 
         response = self.mock.post('/trackrequest', json=uploadAudio)
@@ -54,7 +54,7 @@ class testCase(unittest.TestCase):
         mock_get_db.return_value = sqlite3.connect('mock_database.db') # using mock database for testing
 
         # Reading track fragment of a speech and not a song
-        with open("wavs/~Davos.wav", "rb") as file:
+        with open("../wavs/~Davos.wav", "rb") as file:
             uploadAudio = {"audio": base64.b64encode(file.read()).decode("utf-8")}
 
         response = self.mock.post('/trackrequest', json=uploadAudio)

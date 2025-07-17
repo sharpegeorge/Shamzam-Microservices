@@ -1,6 +1,6 @@
 import unittest
-from database import reset_db
-import track_add
+from ../database import reset_db
+import ../track_add
 import base64
 
 class testCase(unittest.TestCase):
@@ -13,7 +13,7 @@ class testCase(unittest.TestCase):
         """Happy Path - successfully add a new track"""
 
         # Reading track and encodes to base64 
-        with open("wavs/Blinding Lights.wav", "rb") as file:
+        with open("../wavs/Blinding Lights.wav", "rb") as file:
             uploadAudio = base64.b64encode(file.read()).decode("utf-8")
 
         payload = {
@@ -50,7 +50,7 @@ class testCase(unittest.TestCase):
         """Unhappy Path - duplicate track entry"""
 
         # Reading track and encodes to base64 
-        with open("wavs/Blinding Lights.wav", "rb") as file:
+        with open("../wavs/Blinding Lights.wav", "rb") as file:
             uploadAudio = base64.b64encode(file.read()).decode("utf-8")
 
         payload = {

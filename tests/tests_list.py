@@ -1,6 +1,6 @@
 import unittest
-from database import reset_db
-import track_list
+from ../database import reset_db
+import ../track_list
 from unittest.mock import patch
 import sqlite3
 
@@ -13,7 +13,7 @@ class testCase(unittest.TestCase):
     @patch("track_list.get_db")
     def test_list(self, mock_get_db):
         """Happy Path - retrieve tracks when database has entries"""
-        mock_get_db.return_value = sqlite3.connect('mock_database.db') # using mock database for testing
+        mock_get_db.return_value = sqlite3.connect('../mock_database.db') # using mock database for testing
 
         # getting data from database
         response = self.mock.get('/tracks')
