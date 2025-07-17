@@ -19,12 +19,14 @@ A microservice-based music recognition MVP inspired by Shazam. It allows users t
    cd Shamzam-Microservices
    ```
 
+2. Create the file `api_key.txt` in the root directory and paste your Audd.io API key in
+
 3. Install dependencies
    ```bash
    pip install -r requirements.txt
    ```
 
-5. Run one of the available test suites
+4. Run one of the available test suites
    ```bash
    python "tests/test_add.py"
    python "tests/test_list.py"
